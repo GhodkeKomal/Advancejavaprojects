@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset=""UTF-8>
+        <metaname="viewport" contente="width=device-width,initial-scale1.0">
+
+        <style>
+            body{
+                font-family:Arial,sans-serif;
+                margin: 0;
+                padding:0;
+                box-sizing: border-box;
+            }
+
+           header,footer{
+                background-color:#333;
+                color:white;
+                text-align: center;
+                padding:10px;
+            }
+
+           nav{
+               width:20%;
+               float: left;
+               flood-color:#f2f2f2 ;
+                padding:20px;
+                height: 100vh;
+            }
+
+            nav a{
+                display:block;
+                padding:10px;
+                margin-bottom: 10px;
+                text-decoration:none;
+                color: #333;
+                background-color:#ddd;
+                border-radius: 5px;
+            }
+
+            nav a:hover{
+                background-color:#bbb;
+            }
+
+            section{
+                float: left;
+                width:80%;
+                padding:20px;
+            }
+
+            table{
+                width:100x;
+                border-collapse:collapse;
+                margin-top: 20px;
+            }
+
+            th,td{
+                border:1pxsolid#ddd;
+                padding: 8px;
+                text-align:left ;
+              }
+            th{
+                background-color: #333;
+                color:white ;
+            }
+            form{
+                max-width:400px;
+                margin:0auto;
+            }
+
+            input,select,label{
+                display:block;
+                margin-bottom: 10px;
+            }
+          input[type="submit"]{
+            background-color:#4caf50;
+            color: white;
+            padding:10px;
+            border:none;
+           border-radius: 5px;
+           cursor:pointer;
+          }
+
+          input[type="submit"]:hover{
+            background-color:#4caf50;
+          }
+          </style>
+
+          <script>
+            function saveData()
+            {
+             var formData={
+                field1:document.getElementById('field1').value;
+                field1:document.getElementById('field2').value;
+            }
+
+            var existingData=JSON.parse(sessionStorage.getItem('fromData')) ||[];
+
+            existingData.push(formData);
+            sessionStorage.getItem('fromData',JSON.stringify(existingData));
+
+            document.getElementById('addfrom').reset();
+        }
+        
+    function displayData()
+    {
+        var storedData=JSON.parse(sessionStorage.getItem('fromData'))||[];
+
+        var table= '<table><tr><th> field1</th><th>field2</th><th>field3</th></tr>';
+
+            for(var i=0;i<StoredData.length;i++){
+                    table +='<tr>';
+                    table+='<td>'+storedData[i].field1+'</td>';
+                    table+='<td>'+storedData[i].field2+'</td>';
+                    table+='<tr>';
+                }
+
+                table+='<table>';
+
+                    document.getElementById('viewSection').innerHTMl=table;
+                }  
+       </script>
+        </head>
+        </body>
+       
+        <header>
+            <h1> web app</h1>
+            </header>
+
+        <nav>
+            <a href="#" onclick="displayData()">view</a>
+            <a href="#" onclick="document.getElementById('addSection').style.display='block'">add</a>
+        </nav>
+        
+        <section id="addSection">
+        <h2> Add Record</h2>
+        <form id="addForm" onsubmit="event.preventDefault(); saveData();">
+
+        <label for="field1"> field 1: </label>
+       <input type="text" id="field1" name="field1" required>
+
+       <label for="field1">field 2</label>
+       <input type="text" id="field2" name="field2" required>
+
+       <input type="submit" value="submit">
+    </form>
+       </section>
+    </section id="viewSection">
+       </section>
+       <footer>
+        <p>&copy company</p>
+       </footer>
+    </body>
+</html>
+   
+
